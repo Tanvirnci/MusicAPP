@@ -1,3 +1,5 @@
+<%-- this is a picture should be and needs to be referenced in a better way to GUI class --%>
+
 <%-- 
     Document   : logo
     Created on : 27 Mar 2024, 10:32:33

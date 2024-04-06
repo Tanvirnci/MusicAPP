@@ -6,10 +6,10 @@ package musicapp;
  * @author tanvi
  */
 public interface GenrePlaySongInterface {
-    void addCountrymusic Song(Song song);
-    void addSoulmusicSong(Song song);
-    void deleteCountrymusicSong(Song song);
-    void deleteSoulmusicSong(Song song);
+    void addCountrymusic(Songs song);
+    void addSoulmusicSong(Songs song);
+    void deleteCountrymusicSong(Songs song);
+    void deleteSoulmusicSong(Songs song);
     void printCountrymusicPlaylist();
     void printSoulmusicPlaylist();
     int countCountrymusicSongs();

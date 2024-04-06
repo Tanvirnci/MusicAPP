@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
  */
 
 
-class GenrePlaylist implements GenrePlaylist Interface {
+class GenrePlaylist implements GenrePlaySongInterface {
 
     //two arraylist for the both genres 
     private final ArrayList<Node> CountrymusicPlaylist;
@@ -36,7 +36,7 @@ class GenrePlaylist implements GenrePlaylist Interface {
     
     // Add song to Countrymusic the playlist
     @Override
-    public void addCountrymusicPlaylist(Song song) {
+    public void addCountrymusicPlaylist(Songs song) {
         //Node class instance 
         Node newNode = new Node(song);
         //adding the new song
@@ -52,7 +52,7 @@ class GenrePlaylist implements GenrePlaylist Interface {
 
     // Add song to the Soulmusic playlist
     @Override
-    public void add(song song) {
+    public void add(Songs song) {
         //Node class instance 
         Node newNode = new Node(song);
         //adding the new song
@@ -65,10 +65,12 @@ class GenrePlaylist implements GenrePlaylist Interface {
             newNode.setNext(SoulmusicPlaylist.get(0));
         }
     }
-
+//here this part 
+////I do not know where is the error 
+    //all other classes loos good 
     // Delete song from the Countrymusic playlist
     @Override
-    public void deleteCountrymusic(song songToDelete) {
+    public void deleteCountrymusic(Songs songToDelete) {
         // Check if the list is empty
         if (CountrymusicPlaylist.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Countrymusic playlist is empty. No song to delete.");
@@ -99,7 +101,7 @@ class GenrePlaylist implements GenrePlaylist Interface {
     
     // Delete song from the Soulmusic playlist
     @Override
-    public void deleteSoulmusicSong(Song songToDelete) {
+    public void deleteSoulmusicSong(Songs songToDelete) {
         // Check if the list is empty
         if (SoulmusicPlaylist.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Soulmusicplaylist is empty. No song to delete.");
@@ -142,7 +144,7 @@ class GenrePlaylist implements GenrePlaylist Interface {
         // Iterate over each Node in the playlist and append the song information to the StringBuilder
         for (Node node : CountrymusicPlaylist) {
             // Retrieve the Song object associated with the current Node
-            Song song = node.getSong();
+            Songs song = node.getSong();
             // Append the title and artist of the song to the StringBuilder
             playlistContent.append(song.getTitle()).append(" - ").append(song.getArtist()).append("\n");
         }
@@ -166,7 +168,7 @@ class GenrePlaylist implements GenrePlaylist Interface {
         // Iterate over each Node in the playlist and append the song information to the StringBuilder
         for (Node node : SoulmusicPlaylist) {
             // Retrieve the Song object associated with the current Node
-            Song song = node.getSong();
+            Songs song = node.getSong();
             // Append the title and artist of the song to the StringBuilder
             playlistContent.append(song.getTitle()).append(" - ").append(song.getArtist()).append("\n");
         }
@@ -223,7 +225,7 @@ class GenrePlaylist implements GenrePlaylist Interface {
 
         // Iterate through the playlist to find the song matching the search term
         for (Node currentNode : CountrymusicPlaylist) {
-            Song currentSong = currentNode.getSong();
+            Songs currentSong = currentNode.getSong();
             if (currentSong.getTitle().equalsIgnoreCase(title) || currentSong.getArtist().equalsIgnoreCase(artist)) {
                 JOptionPane.showMessageDialog(null, "Song found in Countrymusic playlist: " + currentSong.getTitle() + " - " + currentSong.getArtist());
                 songFound = true;
@@ -248,7 +250,7 @@ class GenrePlaylist implements GenrePlaylist Interface {
 
         // Iterate through the playlist to find the song matching the search term
         for (Node currentNode : SoulmusicPlaylist) {
-            Song currentSong = currentNode.getSong();
+            Songs currentSong = currentNode.getSong();
             if (currentSong.getTitle().equalsIgnoreCase(title) || currentSong.getArtist().equalsIgnoreCase(artist)) {
                 JOptionPane.showMessageDialog(null, "Song found in Soulmusic playlist: " + currentSong.getTitle() + " - " + currentSong.getArtist());
                 songFound = true;

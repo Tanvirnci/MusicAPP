@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package musicapp;
 
 /**
@@ -10,4 +7,11 @@ package musicapp;
  */
 public class MusicApp {
     
+   public static void main(String[] args) {
+        
+        MusicAppGUI Mgui = new MusicAppGUI () ;
+        //set the visibility to true 
+        Mgui.setVisible(true);
+        
+    }
 }

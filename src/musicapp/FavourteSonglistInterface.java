@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package musicapp;
 
 /**
@@ -10,4 +7,13 @@ package musicapp;
  */
 public interface FavourteSonglistInterface {
     
+void addSong();
+    void deleteSong();
+    void printPlaylist();
+    int countSongs();
+//    void setRepeat(boolean repeat);
+    void searchSong(String title, String artist);
+    void setRepeat();
+    void setNotRepeat();
+    void addLastSongToGenre();
 }
