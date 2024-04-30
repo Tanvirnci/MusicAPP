@@ -1,21 +1,63 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package musicapp;
-//this class needs to redesgined and referenced in a better way to not create errors when it runs 
-//ok?
-/**
- *
- * @author tanvi
- */
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.AWTEventListenerActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
+
+
+
 public class MusicAppGUI extends javax.swing.JFrame {
 
+    
+    FavourteSonglistInterface FavourteSong= new FavourteSonglist();
+        
     /**
      * Creates new form MusicAppGUI
      */
     public MusicAppGUI() {
         initComponents();
+        
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        //starting the GUI object in the middle of the scrren 
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
+
+        //setting time and date 
+        Timer timer;
+        timer = new Timer(1000, (ActionEvent e) -> {
+            time();
+        });
+        timer.start();
+
+        date();
+    }
+    
+    public final void date() {
+
+        Calendar cal = new GregorianCalendar();
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        date.setText(year + "/" + (month + 1) + "/" + day);
+
+    }
+
+    public void time() {
+
+        Calendar cal = new GregorianCalendar();
+        int second = cal.get(Calendar.SECOND);
+        int minute = cal.get(Calendar.MINUTE);
+        int hour = cal.get(Calendar.HOUR);
+
+        time.setText(hour + ":" + minute + ":" + second);
+
     }
 
     /**
@@ -27,167 +69,644 @@ public class MusicAppGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        navTABS = new javax.swing.JTabbedPane();
+        likedsongsPANEL = new javax.swing.JPanel();
+        addBTN = new javax.swing.JButton();
+        print_likedBTN = new javax.swing.JButton();
+        deleteBTN = new javax.swing.JButton();
+        exitBTN = new javax.swing.JButton();
+        moveBTN = new javax.swing.JButton();
+        titleTF = new javax.swing.JTextField();
+        searchBTN = new javax.swing.JButton();
+        sizeBTN = new javax.swing.JButton();
+        artistLBL = new javax.swing.JLabel();
+        titleLBL = new javax.swing.JLabel();
+        logoLBL = new javax.swing.JLabel();
+        repeatTOGGLE2 = new javax.swing.JToggleButton();
+        artistTF = new javax.swing.JTextField();
+        NotesLBL1 = new javax.swing.JLabel();
+        notesLBL = new javax.swing.JLabel();
+        backgroundLBL = new javax.swing.JLabel();
+        colorblindLBL = new javax.swing.JLabel();
+        hiphopPANEL = new javax.swing.JPanel();
+        deleteBTN1 = new javax.swing.JButton();
+        artistLBL1 = new javax.swing.JLabel();
+        print_hiphopBTN1 = new javax.swing.JButton();
+        artistTF1 = new javax.swing.JTextField();
+        sizeBTN1 = new javax.swing.JButton();
+        titleTF1 = new javax.swing.JTextField();
+        exitBTN1 = new javax.swing.JButton();
+        searchBTN1 = new javax.swing.JButton();
+        titleLBL1 = new javax.swing.JLabel();
+        logoLBL1 = new javax.swing.JLabel();
+        backgroundLBL1 = new javax.swing.JLabel();
+        colorblindLBL1 = new javax.swing.JLabel();
+        painoPANEL = new javax.swing.JPanel();
+        print_pianoBTN2 = new javax.swing.JButton();
+        deleteBTN2 = new javax.swing.JButton();
+        artistLBL2 = new javax.swing.JLabel();
+        artistTF2 = new javax.swing.JTextField();
+        sizeBTN2 = new javax.swing.JButton();
+        titleTF2 = new javax.swing.JTextField();
+        exitBTN2 = new javax.swing.JButton();
+        searchBTN2 = new javax.swing.JButton();
+        logoLBL2 = new javax.swing.JLabel();
+        titleLBL2 = new javax.swing.JLabel();
+        backgroundLBL2 = new javax.swing.JLabel();
+        colorblindLBL2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        date = new javax.swing.JMenu();
+        time = new javax.swing.JMenu();
+        colorBlindMode = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 153, 153));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setForeground(java.awt.Color.blue);
-        setIconImages(null);
 
-        jButton1.setText("Favourte Songs");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        likedsongsPANEL.setLayout(null);
+
+        addBTN.setBackground(new java.awt.Color(51, 51, 51));
+        addBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addBTN.setForeground(new java.awt.Color(255, 255, 255));
+        addBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Allowance.png"))); // NOI18N
+        addBTN.setText("Add");
+        addBTN.setToolTipText("Add song based on title & artist");
+        addBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addBTNActionPerformed(evt);
             }
         });
+        likedsongsPANEL.add(addBTN);
+        addBTN.setBounds(680, 620, 120, 50);
 
-        jButton2.setText("Countrymusic");
-
-        jButton3.setText("Soulmusic");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        print_likedBTN.setBackground(new java.awt.Color(51, 51, 51));
+        print_likedBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        print_likedBTN.setForeground(new java.awt.Color(255, 255, 255));
+        print_likedBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/folder.png"))); // NOI18N
+        print_likedBTN.setText("Print Liked");
+        print_likedBTN.setToolTipText("To print all songs in this list");
+        print_likedBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                print_likedBTNActionPerformed(evt);
             }
         });
+        likedsongsPANEL.add(print_likedBTN);
+        print_likedBTN.setBounds(400, 620, 150, 50);
 
-        jButton5.setText("Next");
+        deleteBTN.setBackground(new java.awt.Color(51, 51, 51));
+        deleteBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        deleteBTN.setForeground(new java.awt.Color(255, 255, 255));
+        deleteBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_16x16.gif"))); // NOI18N
+        deleteBTN.setText("Delete");
+        deleteBTN.setToolTipText("To delete song");
+        deleteBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBTNActionPerformed(evt);
+            }
+        });
+        likedsongsPANEL.add(deleteBTN);
+        deleteBTN.setBounds(560, 620, 100, 50);
 
-        jButton6.setText("Search");
+        exitBTN.setBackground(new java.awt.Color(51, 51, 51));
+        exitBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        exitBTN.setForeground(new java.awt.Color(255, 255, 255));
+        exitBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/exit.png"))); // NOI18N
+        exitBTN.setText("Exit");
+        exitBTN.setToolTipText("To shutdown");
+        exitBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBTNActionPerformed(evt);
+            }
+        });
+        likedsongsPANEL.add(exitBTN);
+        exitBTN.setBounds(0, 10, 100, 50);
 
-        jButton7.setText("Size");
+        moveBTN.setBackground(new java.awt.Color(51, 51, 51));
+        moveBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        moveBTN.setForeground(new java.awt.Color(255, 255, 255));
+        moveBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/attach.png"))); // NOI18N
+        moveBTN.setText("Move");
+        moveBTN.setToolTipText("Move songs to genres");
+        moveBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveBTNActionPerformed(evt);
+            }
+        });
+        likedsongsPANEL.add(moveBTN);
+        moveBTN.setBounds(10, 620, 100, 50);
 
-        jButton9.setText("Delete");
+        titleTF.setToolTipText("Title of the song");
+        likedsongsPANEL.add(titleTF);
+        titleTF.setBounds(910, 450, 250, 40);
 
-        jButton10.setText("Add");
+        searchBTN.setBackground(new java.awt.Color(51, 51, 51));
+        searchBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        searchBTN.setForeground(new java.awt.Color(255, 255, 255));
+        searchBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
+        searchBTN.setText("Search");
+        searchBTN.setToolTipText("To search based on artist||title");
+        searchBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBTNActionPerformed(evt);
+            }
+        });
+        likedsongsPANEL.add(searchBTN);
+        searchBTN.setBounds(120, 620, 130, 50);
 
-        jButton11.setText("Repeat");
+        sizeBTN.setBackground(new java.awt.Color(51, 51, 51));
+        sizeBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        sizeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        sizeBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/attachment-512.png"))); // NOI18N
+        sizeBTN.setText("Size");
+        sizeBTN.setToolTipText("To check how many songs in this list");
+        sizeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sizeBTNActionPerformed(evt);
+            }
+        });
+        likedsongsPANEL.add(sizeBTN);
+        sizeBTN.setBounds(260, 620, 130, 50);
 
-        jLabel4.setText("Title");
+        artistLBL.setBackground(new java.awt.Color(0, 0, 0));
+        artistLBL.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        artistLBL.setForeground(new java.awt.Color(153, 153, 153));
+        artistLBL.setText("Artist");
+        likedsongsPANEL.add(artistLBL);
+        artistLBL.setBounds(840, 520, 60, 40);
 
-        jLabel5.setText("Artist");
+        titleLBL.setBackground(new java.awt.Color(0, 0, 0));
+        titleLBL.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        titleLBL.setForeground(new java.awt.Color(153, 153, 153));
+        titleLBL.setText("Title");
+        likedsongsPANEL.add(titleLBL);
+        titleLBL.setBounds(840, 450, 60, 40);
 
-        jTextField1.setText("jTextField1");
+        logoLBL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.gif"))); // NOI18N
+        likedsongsPANEL.add(logoLBL);
+        logoLBL.setBounds(990, 10, 170, 210);
 
-        jTextField2.setText("jTextField1");
+        repeatTOGGLE2.setBackground(new java.awt.Color(51, 51, 51));
+        repeatTOGGLE2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        repeatTOGGLE2.setForeground(new java.awt.Color(255, 255, 255));
+        repeatTOGGLE2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update icon.png"))); // NOI18N
+        repeatTOGGLE2.setText("Repeat");
+        repeatTOGGLE2.setToolTipText("To repeat songs");
+        repeatTOGGLE2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repeatTOGGLE2ActionPerformed(evt);
+            }
+        });
+        likedsongsPANEL.add(repeatTOGGLE2);
+        repeatTOGGLE2.setBounds(1040, 620, 120, 50);
+        repeatTOGGLE2.setEnabled(false);
+
+        artistTF.setToolTipText("Artist of the song");
+        likedsongsPANEL.add(artistTF);
+        artistTF.setBounds(910, 520, 250, 40);
+
+        NotesLBL1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Musical-Notes-Transparent.png"))); // NOI18N
+        likedsongsPANEL.add(NotesLBL1);
+        NotesLBL1.setBounds(-180, 210, 990, 820);
+
+        notesLBL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Musical-Notes-Transparent.png"))); // NOI18N
+        likedsongsPANEL.add(notesLBL);
+        notesLBL.setBounds(-250, -290, 990, 820);
+
+        backgroundLBL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/monkeie.jpg"))); // NOI18N
+        likedsongsPANEL.add(backgroundLBL);
+        backgroundLBL.setBounds(0, 0, 1200, 870);
+
+        colorblindLBL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/dark liked background.jpg"))); // NOI18N
+        likedsongsPANEL.add(colorblindLBL);
+        colorblindLBL.setBounds(0, 10, 1200, 810);
+
+        navTABS.addTab("Favourte Song", likedsongsPANEL);
+
+        hiphopPANEL.setLayout(null);
+
+        deleteBTN1.setBackground(new java.awt.Color(51, 51, 51));
+        deleteBTN1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        deleteBTN1.setForeground(new java.awt.Color(255, 255, 255));
+        deleteBTN1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_16x16.gif"))); // NOI18N
+        deleteBTN1.setText("Delete");
+        deleteBTN1.setToolTipText("To delete song");
+        deleteBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBTN1ActionPerformed(evt);
+            }
+        });
+        hiphopPANEL.add(deleteBTN1);
+        deleteBTN1.setBounds(460, 620, 100, 50);
+
+        artistLBL1.setBackground(new java.awt.Color(0, 0, 0));
+        artistLBL1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        artistLBL1.setForeground(new java.awt.Color(153, 153, 153));
+        artistLBL1.setText("Artist");
+        hiphopPANEL.add(artistLBL1);
+        artistLBL1.setBounds(840, 520, 60, 40);
+
+        print_hiphopBTN1.setBackground(new java.awt.Color(51, 51, 51));
+        print_hiphopBTN1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        print_hiphopBTN1.setForeground(new java.awt.Color(255, 255, 255));
+        print_hiphopBTN1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/folder.png"))); // NOI18N
+        print_hiphopBTN1.setText("Print HipHop");
+        print_hiphopBTN1.setToolTipText("To print all songs in this list");
+        print_hiphopBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                print_hiphopBTN1ActionPerformed(evt);
+            }
+        });
+        hiphopPANEL.add(print_hiphopBTN1);
+        print_hiphopBTN1.setBounds(290, 620, 160, 50);
+
+        artistTF1.setToolTipText("Artist of the song");
+        hiphopPANEL.add(artistTF1);
+        artistTF1.setBounds(910, 520, 250, 40);
+
+        sizeBTN1.setBackground(new java.awt.Color(51, 51, 51));
+        sizeBTN1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        sizeBTN1.setForeground(new java.awt.Color(255, 255, 255));
+        sizeBTN1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/attachment-512.png"))); // NOI18N
+        sizeBTN1.setText("Size");
+        sizeBTN1.setToolTipText("To check how many songs in this list");
+        sizeBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sizeBTN1ActionPerformed(evt);
+            }
+        });
+        hiphopPANEL.add(sizeBTN1);
+        sizeBTN1.setBounds(150, 620, 130, 50);
+
+        titleTF1.setToolTipText("Title of the song");
+        hiphopPANEL.add(titleTF1);
+        titleTF1.setBounds(910, 450, 250, 40);
+
+        exitBTN1.setBackground(new java.awt.Color(51, 51, 51));
+        exitBTN1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        exitBTN1.setForeground(new java.awt.Color(255, 255, 255));
+        exitBTN1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/exit.png"))); // NOI18N
+        exitBTN1.setText("Exit");
+        exitBTN1.setToolTipText("To shutdown");
+        exitBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBTN1ActionPerformed(evt);
+            }
+        });
+        hiphopPANEL.add(exitBTN1);
+        exitBTN1.setBounds(0, 10, 100, 50);
+
+        searchBTN1.setBackground(new java.awt.Color(51, 51, 51));
+        searchBTN1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        searchBTN1.setForeground(new java.awt.Color(255, 255, 255));
+        searchBTN1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
+        searchBTN1.setText("Search");
+        searchBTN1.setToolTipText("To search based on artist||title");
+        searchBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBTN1ActionPerformed(evt);
+            }
+        });
+        hiphopPANEL.add(searchBTN1);
+        searchBTN1.setBounds(10, 620, 130, 50);
+
+        titleLBL1.setBackground(new java.awt.Color(0, 0, 0));
+        titleLBL1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        titleLBL1.setForeground(new java.awt.Color(153, 153, 153));
+        titleLBL1.setText("Title");
+        hiphopPANEL.add(titleLBL1);
+        titleLBL1.setBounds(840, 450, 60, 40);
+
+        logoLBL1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.gif"))); // NOI18N
+        hiphopPANEL.add(logoLBL1);
+        logoLBL1.setBounds(990, 10, 170, 210);
+
+        backgroundLBL1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Musical-Notes-Transparent.png"))); // NOI18N
+        hiphopPANEL.add(backgroundLBL1);
+        backgroundLBL1.setBounds(0, 0, 1200, 810);
+
+        colorblindLBL1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/hiphop nackground.jpg"))); // NOI18N
+        hiphopPANEL.add(colorblindLBL1);
+        colorblindLBL1.setBounds(0, 10, 1200, 810);
+
+        navTABS.addTab("CountryMusic", hiphopPANEL);
+
+        painoPANEL.setLayout(null);
+
+        print_pianoBTN2.setBackground(new java.awt.Color(51, 51, 51));
+        print_pianoBTN2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        print_pianoBTN2.setForeground(new java.awt.Color(255, 255, 255));
+        print_pianoBTN2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/folder.png"))); // NOI18N
+        print_pianoBTN2.setText("Print Soulmusic");
+        print_pianoBTN2.setToolTipText("To print all songs in this list");
+        print_pianoBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                print_pianoBTN2ActionPerformed(evt);
+            }
+        });
+        painoPANEL.add(print_pianoBTN2);
+        print_pianoBTN2.setBounds(290, 620, 160, 50);
+
+        deleteBTN2.setBackground(new java.awt.Color(51, 51, 51));
+        deleteBTN2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        deleteBTN2.setForeground(new java.awt.Color(255, 255, 255));
+        deleteBTN2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_16x16.gif"))); // NOI18N
+        deleteBTN2.setText("Delete");
+        deleteBTN2.setToolTipText("To delete song");
+        deleteBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBTN2ActionPerformed(evt);
+            }
+        });
+        painoPANEL.add(deleteBTN2);
+        deleteBTN2.setBounds(450, 620, 160, 50);
+
+        artistLBL2.setBackground(new java.awt.Color(0, 0, 0));
+        artistLBL2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        artistLBL2.setForeground(new java.awt.Color(153, 153, 153));
+        artistLBL2.setText("Artist");
+        painoPANEL.add(artistLBL2);
+        artistLBL2.setBounds(840, 520, 60, 40);
+
+        artistTF2.setToolTipText("Artist of the song");
+        painoPANEL.add(artistTF2);
+        artistTF2.setBounds(910, 520, 250, 40);
+
+        sizeBTN2.setBackground(new java.awt.Color(51, 51, 51));
+        sizeBTN2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        sizeBTN2.setForeground(new java.awt.Color(255, 255, 255));
+        sizeBTN2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/attachment-512.png"))); // NOI18N
+        sizeBTN2.setText("Size");
+        sizeBTN2.setToolTipText("To check how many songs in this list");
+        sizeBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sizeBTN2ActionPerformed(evt);
+            }
+        });
+        painoPANEL.add(sizeBTN2);
+        sizeBTN2.setBounds(150, 620, 130, 50);
+
+        titleTF2.setToolTipText("Title of the song");
+        painoPANEL.add(titleTF2);
+        titleTF2.setBounds(910, 450, 250, 40);
+
+        exitBTN2.setBackground(new java.awt.Color(51, 51, 51));
+        exitBTN2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        exitBTN2.setForeground(new java.awt.Color(255, 255, 255));
+        exitBTN2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/exit.png"))); // NOI18N
+        exitBTN2.setText("Exit");
+        exitBTN2.setToolTipText("To shutdown");
+        exitBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBTN2ActionPerformed(evt);
+            }
+        });
+        painoPANEL.add(exitBTN2);
+        exitBTN2.setBounds(0, 10, 100, 50);
+
+        searchBTN2.setBackground(new java.awt.Color(51, 51, 51));
+        searchBTN2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        searchBTN2.setForeground(new java.awt.Color(255, 255, 255));
+        searchBTN2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
+        searchBTN2.setText("Search");
+        searchBTN2.setToolTipText("To search based on artist||title");
+        searchBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBTN2ActionPerformed(evt);
+            }
+        });
+        painoPANEL.add(searchBTN2);
+        searchBTN2.setBounds(10, 620, 130, 50);
+
+        logoLBL2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/musiclibrary/logo 2.0.gif"))); // NOI18N
+        painoPANEL.add(logoLBL2);
+        logoLBL2.setBounds(880, 10, 280, 210);
+
+        titleLBL2.setBackground(new java.awt.Color(0, 0, 0));
+        titleLBL2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        titleLBL2.setForeground(new java.awt.Color(153, 153, 153));
+        titleLBL2.setText("Title");
+        painoPANEL.add(titleLBL2);
+        titleLBL2.setBounds(840, 450, 60, 40);
+
+        backgroundLBL2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/pngtree-note-music-logo-watercolor-background-picture-image_1589075.png"))); // NOI18N
+        painoPANEL.add(backgroundLBL2);
+        backgroundLBL2.setBounds(-70, -30, 1200, 870);
+
+        colorblindLBL2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/piano dark.jpg"))); // NOI18N
+        painoPANEL.add(colorblindLBL2);
+        colorblindLBL2.setBounds(0, 10, 1200, 810);
+
+        navTABS.addTab("SoulmusicSong", painoPANEL);
+
+        jMenuBar1.setToolTipText("Menu to view data ");
+
+        date.setText("Date");
+        jMenuBar1.add(date);
+
+        time.setText("Time");
+        jMenuBar1.add(time);
+
+        colorBlindMode.setText("Color-Blind?");
+        colorBlindMode.setToolTipText("Toggle between modes ");
+        colorBlindMode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                colorBlindModeMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(colorBlindMode);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addGap(35, 35, 35)
-                                .addComponent(jButton6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton7)
-                                .addGap(248, 248, 248)
-                                .addComponent(jButton9)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(396, 396, 396)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel5))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(515, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(navTABS, javax.swing.GroupLayout.PREFERRED_SIZE, 1167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6)
-                            .addComponent(jButton7)
-                            .addComponent(jButton9)
-                            .addComponent(jButton10))
-                        .addGap(40, 40, 40))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jButton11)
-                        .addGap(55, 55, 55))))
+                .addContainerGap()
+                .addComponent(navTABS, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void exitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBTNActionPerformed
+        JOptionPane.showMessageDialog(null , "Bye-Bye");
+        System.exit(0);
+        
+    }//GEN-LAST:event_exitBTNActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private boolean isLightMode = false;
+    
+    private void colorBlindModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorBlindModeMouseClicked
+        
+        //color blind mode toggling 
+        
+        backgroundLBL.setVisible(isLightMode);
+        
+        colorblindLBL.setVisible(!isLightMode);
+        
+        backgroundLBL1.setVisible(isLightMode);
+        
+        colorblindLBL1.setVisible(!isLightMode);
+        
+        backgroundLBL2.setVisible(isLightMode);
+        
+        colorblindLBL2.setVisible(!isLightMode);
+        
+        isLightMode = !isLightMode;
+        
+    }//GEN-LAST:event_colorBlindModeMouseClicked
+
+    private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
+        
+        if (artistTF.getText().isEmpty() == true || titleTF.getText().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null , "Please enter the title and the artist.");
+        } else {
+             FavourteSong.addSong();
+        }
+
+    }//GEN-LAST:event_addBTNActionPerformed
+
+    private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
+        
+        if ( titleTF.getText().isEmpty() == true && artistTF.getText().isEmpty() == true ) {
+            
+            JOptionPane.showMessageDialog(null , "Please enter title or artist.");
+            
+        } else {
+             FavourteSong.deleteSong();
+        }
+        
+    }//GEN-LAST:event_deleteBTNActionPerformed
+
+    private void print_likedBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_likedBTNActionPerformed
+        
+         FavourteSong.printPlaylist();
+        
+    }//GEN-LAST:event_print_likedBTNActionPerformed
+
+    private void sizeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeBTNActionPerformed
+        
+         FavourteSong.countSongs();
+        
+    }//GEN-LAST:event_sizeBTNActionPerformed
+
+    private void searchBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBTNActionPerformed
+        
+        String title = titleTF.getText();
+        String artist = artistTF.getText();
+        
+         FavourteSong.searchSong(title, artist);
+                
+    }//GEN-LAST:event_searchBTNActionPerformed
+
+    private void moveBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveBTNActionPerformed
+        
+         FavourteSong.addLastSongToGenre();
+        
+    }//GEN-LAST:event_moveBTNActionPerformed
+
+    private void repeatTOGGLE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repeatTOGGLE2ActionPerformed
+        
+        boolean repeat = false;
+        
+        if (MusicAppGUI.repeatTOGGLE2.isSelected() == true) {
+            repeat = true;
+             FavourteSong.setRepeat();
+             FavourteSonglist.getInstance().setRepeat(repeat);
+        } else if (MusicAppGUI.repeatTOGGLE2.isSelected() == false) {
+            repeat = false;
+             FavourteSong.setNotRepeat();
+             FavourteSonglist.getInstance().setRepeat(repeat);
+        }
+    }//GEN-LAST:event_repeatTOGGLE2ActionPerformed
+
+    private void deleteBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTN1ActionPerformed
+        
+        if (titleTF1.getText().isEmpty() == true || artistTF1.getText().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null , "Please enter the artist and title");
+        } else {
+            String title = titleTF1.getText ();
+            String artist = artistTF1.getText();
+
+            Songs songToDelete = new Songs(title, artist);
+             FavourteSonglist.getInstance().deleteHipHopSong(songToDelete);
+        }
+    }//GEN-LAST:event_deleteBTN1ActionPerformed
+
+    private void sizeBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeBTN1ActionPerformed
+        
+         FavourteSonglist.getInstance().countHiphopSongs();
+                
+    }//GEN-LAST:event_sizeBTN1ActionPerformed
+
+    private void exitBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBTN1ActionPerformed
+        JOptionPane.showMessageDialog(null , "Bye-Bye");
+        System.exit(0);
+        
+    }//GEN-LAST:event_exitBTN1ActionPerformed
+
+    private void searchBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBTN1ActionPerformed
+        
+        String title = titleTF1.getText();
+        String artist = artistTF1.getText();
+        
+         FavourteSonglist.getInstance().searchHipHopSong(title, artist);
+        
+    }//GEN-LAST:event_searchBTN1ActionPerformed
+
+    private void deleteBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTN2ActionPerformed
+        
+        if (titleTF2.getText().isEmpty() == true || artistTF2.getText().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null , "Please enter the artist and title");
+        } else {
+            String title = titleTF2.getText ();
+            String artist = artistTF2.getText();
+
+            Songs songToDelete = new Songs(title, artist);
+             FavourteSonglist.getInstance().deletePianoSong(songToDelete);
+        }
+                
+    }//GEN-LAST:event_deleteBTN2ActionPerformed
+
+    private void sizeBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeBTN2ActionPerformed
+        
+         FavourteSonglist.getInstance().countPianoSongs();
+                
+    }//GEN-LAST:event_sizeBTN2ActionPerformed
+
+    private void exitBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBTN2ActionPerformed
+        JOptionPane.showMessageDialog(null , "Bye-Bye");
+        System.exit(0);
+        
+    }//GEN-LAST:event_exitBTN2ActionPerformed
+
+    private void searchBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBTN2ActionPerformed
+        
+        String title = titleTF2.getText();
+        String artist = artistTF2.getText();
+        
+         FavourteSonglist.getInstance().searchPianoSong(title, artist);
+        
+    }//GEN-LAST:event_searchBTN2ActionPerformed
+
+    private void print_hiphopBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_hiphopBTN1ActionPerformed
+        
+         FavourteSonglist.getInstance().printHipHopPlaylist();
+        
+    }//GEN-LAST:event_print_hiphopBTN1ActionPerformed
+
+    private void print_pianoBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_pianoBTN2ActionPerformed
+        
+         FavourteSonglist.getInstance().printPianoPlaylist();
+        
+    }//GEN-LAST:event_print_pianoBTN2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,6 +734,9 @@ public class MusicAppGUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MusicAppGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -225,21 +747,54 @@ public class MusicAppGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel NotesLBL1;
+    private javax.swing.JButton addBTN;
+    private javax.swing.JLabel artistLBL;
+    private javax.swing.JLabel artistLBL1;
+    private javax.swing.JLabel artistLBL2;
+    public static javax.swing.JTextField artistTF;
+    public static javax.swing.JTextField artistTF1;
+    public static javax.swing.JTextField artistTF2;
+    private javax.swing.JLabel backgroundLBL;
+    private javax.swing.JLabel backgroundLBL1;
+    private javax.swing.JLabel backgroundLBL2;
+    private javax.swing.JMenu colorBlindMode;
+    private javax.swing.JLabel colorblindLBL;
+    private javax.swing.JLabel colorblindLBL1;
+    private javax.swing.JLabel colorblindLBL2;
+    private javax.swing.JMenu date;
+    private javax.swing.JButton deleteBTN;
+    private javax.swing.JButton deleteBTN1;
+    private javax.swing.JButton deleteBTN2;
+    private javax.swing.JButton exitBTN;
+    private javax.swing.JButton exitBTN1;
+    private javax.swing.JButton exitBTN2;
+    private javax.swing.JPanel hiphopPANEL;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel likedsongsPANEL;
+    private javax.swing.JLabel logoLBL;
+    private javax.swing.JLabel logoLBL1;
+    private javax.swing.JLabel logoLBL2;
+    private javax.swing.JButton moveBTN;
+    private javax.swing.JTabbedPane navTABS;
+    private javax.swing.JLabel notesLBL;
+    private javax.swing.JPanel painoPANEL;
+    private javax.swing.JButton print_hiphopBTN1;
+    private javax.swing.JButton print_likedBTN;
+    private javax.swing.JButton print_pianoBTN2;
+    public static javax.swing.JToggleButton repeatTOGGLE2;
+    private javax.swing.JButton searchBTN;
+    private javax.swing.JButton searchBTN1;
+    private javax.swing.JButton searchBTN2;
+    private javax.swing.JButton sizeBTN;
+    private javax.swing.JButton sizeBTN1;
+    private javax.swing.JButton sizeBTN2;
+    private javax.swing.JMenu time;
+    private javax.swing.JLabel titleLBL;
+    private javax.swing.JLabel titleLBL1;
+    private javax.swing.JLabel titleLBL2;
+    public static javax.swing.JTextField titleTF;
+    public static javax.swing.JTextField titleTF1;
+    public static javax.swing.JTextField titleTF2;
     // End of variables declaration//GEN-END:variables
 }
